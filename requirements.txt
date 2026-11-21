@@ -1,0 +1,9 @@
+fastapi
+uvicorn
+PyMySQL[rsa]
+python-multipart
+httpx
+Pillow
+openpyxl
+SQLAlchemy
+PyYAML

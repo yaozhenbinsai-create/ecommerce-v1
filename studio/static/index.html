@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="theme-color" content="#25252f" />
+    <title>织造 · 产品工作室</title>
+    <link rel="stylesheet" href="/static/style.css?v=20261110-menu-groups" />
+    <script type="module">
+      import('/static/app.js?v=20261110-menu-groups').catch((error) => {
+        console.error(error.stack || error);
+        const root = document.getElementById('main');
+        root.setAttribute('aria-busy', 'false');
+        root.replaceChildren();
+        const box = document.createElement('div');
+        box.className = 'empty-state';
+        const title = document.createElement('h3');
+        title.textContent = '工作界面未能加载';
+        const detail = document.createElement('p');
+        detail.textContent = '请重新加载页面。若仍失败，保留下面的信息以定位问题：' + error.message;
+        const retry = document.createElement('button');
+        retry.className = 'button primary';
+        retry.style.marginTop = '20px';
+        retry.textContent = '重新加载';
+        retry.onclick = () => location.reload();
+        box.append(title, detail, retry);
+        root.append(box);
+      });
+    </script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">跳到页面内容</a>
+    <div class="app-shell">
+      <aside class="sidebar" id="sidebar" aria-label="工作室导航">
+        <a class="brand" href="#/overview"
+          ><span class="brand-symbol" aria-hidden="true">✳</span
+          ><span>织造<small>PRODUCT STUDIO</small></span></a
+        >
+        <div class="workspace-label">产品工作空间 <span>01</span></div>
+        <nav id="navigation"></nav>
+        <div class="sidebar-bottom">
+          <span class="connection-dot" id="connection-dot"></span
+          ><span id="connection-label">正在连接</span
+          ><a href="#/settings/storage" aria-label="查看存储">↗</a>
+        </div>
+      </aside>
+      <div class="app-body">
+        <header class="topbar">
+          <button
+            class="icon-button mobile-menu"
+            type="button"
+            id="menu-toggle"
+            aria-label="打开导航"
+          >
+            ☰
+          </button>
+          <div id="breadcrumb" class="breadcrumb">工作空间</div>
+          <div class="topbar-right">
+            <div id="product-context"></div>
+            <a class="quiet-link" href="#/jobs"><span class="activity-dot"></span>任务中心</a
+            ><span class="avatar" title="本机工作空间">织</span>
+          </div>
+        </header>
+        <main id="main" tabindex="-1" aria-busy="true">
+          <div class="page-loading">
+            <span class="spinner"></span>
+            <p>正在打开工作空间</p>
+          </div>
+        </main>
+        <footer class="app-footer">
+          <span>织造 · 把灵感做成产品</span
+          ><span id="save-status" role="status" aria-live="polite"></span>
+        </footer>
+      </div>
+    </div>
+    <dialog id="modal" aria-labelledby="modal-title"></dialog>
+    <div id="toast-region" class="toast-region" aria-live="polite" aria-atomic="false"></div>
+  </body>
+</html>

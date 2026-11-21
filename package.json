@@ -1,0 +1,14 @@
+{
+  "name": "woven-product-studio",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "format": "prettier --write \"studio/static/**/*.{js,css,html}\"",
+    "format:check": "prettier --check \"studio/static/**/*.{js,css,html}\"",
+    "check:syntax": "node scripts/check-frontend.mjs",
+    "check": "npm run check:syntax && npm run format:check"
+  },
+  "devDependencies": {
+    "prettier": "3.6.2"
+  }
+}
